@@ -39,6 +39,17 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private Collection<Comment> comments;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "post_tag", joinColumns = @JoinColumn(name = "pid"), inverseJoinColumns = @JoinColumn(name = "tid"))
+    private Collection<Tag> tags;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "post_category", joinColumns = @JoinColumn(name = "pid"), inverseJoinColumns = @JoinColumn(name = "cid"))
+    private Collection<Category> categories;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "post_like", joinColumns = @JoinColumn(name = "pid"), inverseJoinColumns = @JoinColumn(name = "lid"))
+    private Collection<Like> likes;
 
     public Long getId() {
         return pid;
@@ -86,5 +97,28 @@ public class Post {
 
     public void setComments(Collection<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Collection<Tag> getTags() {
+        return tags;
+    }
+    public void setTags(Collection<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public void setCategories(Collection<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Collection<Category> getCategories() {
+        return categories;
+    }
+
+    public void setLikes(Collection<Like> likes) {
+        this.likes = likes;
+    }
+
+    public Collection<Like> getLikes() {
+        return likes;
     }
 }

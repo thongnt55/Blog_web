@@ -15,7 +15,7 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Long id;
+    private Long uid;
 
     @Column(name = "email", unique = true, nullable = false)
     @Email(message = "*Please provide a valid Email")
@@ -51,12 +51,16 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<Post> posts;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_like", joinColumns = @JoinColumn(name = "uid"), inverseJoinColumns = @JoinColumn(name = "lid"))
+    private Collection<Like> likes;
+
     public Long getId() {
-        return id;
+        return uid;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.uid = uid;
     }
 
     public String getPassword() {
@@ -121,5 +125,14 @@ public class User {
 
     public void setPosts(Collection<Post> posts) {
         this.posts = posts;
+    }
+
+
+    public void setLikes(Collection<Like> likes) {
+        this.likes = likes;
+    }
+
+    public Collection<Like> getLikes() {
+        return likes;
     }
 }
