@@ -1,8 +1,7 @@
 package com.ntt55.blog_web.Model;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.*;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;

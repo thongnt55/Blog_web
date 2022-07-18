@@ -1,9 +1,7 @@
 package com.ntt55.blog_web.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.*;
 
 import javax.persistence.*;
 import java.util.Collection;
