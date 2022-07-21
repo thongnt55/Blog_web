@@ -30,6 +30,10 @@ public class Tag {
         return tag_name;
     }
 
+    public void setPosts(Collection<Post> posts) {
+        this.posts = posts;
+    }
+
     public void setTag_name(String role) {
         this.tag_name = tag_name;
     }

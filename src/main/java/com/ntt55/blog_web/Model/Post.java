@@ -1,5 +1,6 @@
 package com.ntt55.blog_web.Model;
 
+import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.*;
 import org.jetbrains.annotations.NotNull;
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "post")
+@RequiredArgsConstructor
 public class Post {
 
     @Id
@@ -35,7 +37,7 @@ public class Post {
     @NotNull
     private User user;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Collection<Comment> comments;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -46,15 +48,14 @@ public class Post {
     @JoinTable(name = "post_category", joinColumns = @JoinColumn(name = "pid"), inverseJoinColumns = @JoinColumn(name = "cid"))
     private Collection<Category> categories;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "post_like", joinColumns = @JoinColumn(name = "pid"), inverseJoinColumns = @JoinColumn(name = "lid"))
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private Collection<Like> likes;
 
-    public Long getId() {
+    public Long getPid() {
         return pid;
     }
 
-    public void setId(Long id) {
+    public void setPid(Long pid) {
         this.pid = pid;
     }
 
@@ -78,8 +79,8 @@ public class Post {
         return createDate;
     }
 
-    public void setCreateDate(Date date) {
-        this.createDate = date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public User getUser() {
@@ -101,23 +102,24 @@ public class Post {
     public Collection<Tag> getTags() {
         return tags;
     }
+
     public void setTags(Collection<Tag> tags) {
         this.tags = tags;
-    }
-
-    public void setCategories(Collection<Category> categories) {
-        this.categories = categories;
     }
 
     public Collection<Category> getCategories() {
         return categories;
     }
 
-    public void setLikes(Collection<Like> likes) {
-        this.likes = likes;
+    public void setCategories(Collection<Category> categories) {
+        this.categories = categories;
     }
 
     public Collection<Like> getLikes() {
         return likes;
+    }
+
+    public void setLikes(Collection<Like> likes) {
+        this.likes = likes;
     }
 }

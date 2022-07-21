@@ -1,7 +1,10 @@
 package com.ntt55.blog_web.Model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.*;
+import org.jetbrains.annotations.NotNull;
+
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "like")
@@ -11,28 +14,38 @@ public class Like {
     @Column(name = "like_id")
     private Long lid;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "likes")
-    private Collection<Post> posts;
+    @ManyToOne
+    @JoinColumn(name = "post_id", referencedColumnName = "post_id", nullable = false)
+    @NotNull
+    private Post post;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "likes")
-    private Collection<User> users;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
+    @NotNull
+    private User user;
 
-
-
-    public Collection<Post> getPosts() {
-        return posts;
+    public Long getLid() {
+        return lid;
     }
 
-    public void setPosts(Collection<Post> posts) {
-        this.posts = posts;
+    public void setLid(Long lid) {
+        this.lid = lid;
     }
 
-
-    public Collection<User> getUsers() {
-        return users;
+    public Post getPost() {
+        return post;
     }
 
-    public void setUsers(Collection<User> users) {
-        this.users = users;
+    public void setPost(Post post) {
+        this.post = post;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

@@ -22,6 +22,18 @@ public class Category {
         return cateid;
     }
 
+    public Long getCateid() {
+        return cateid;
+    }
+
+    public void setCateid(Long cateid) {
+        this.cateid = cateid;
+    }
+
+    public void setPosts(Collection<Post> posts) {
+        this.posts = posts;
+    }
+
     public void setId(Long id) {
         this.cateid = cateid;
     }

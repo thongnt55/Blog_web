@@ -49,16 +49,23 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Collection<Post> posts;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_like", joinColumns = @JoinColumn(name = "uid"), inverseJoinColumns = @JoinColumn(name = "lid"))
+    @OneToMany(mappedBy = "user")
     private Collection<Like> likes;
 
-    public Long getId() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setId(Long id) {
+    public void setUid(Long uid) {
         this.uid = uid;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -93,14 +100,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public int getActive() {
         return active;
     }
@@ -125,12 +124,11 @@ public class User {
         this.posts = posts;
     }
 
+    public Collection<Like> getLikes() {
+        return likes;
+    }
 
     public void setLikes(Collection<Like> likes) {
         this.likes = likes;
-    }
-
-    public Collection<Like> getLikes() {
-        return likes;
     }
 }
