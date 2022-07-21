@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -39,13 +40,16 @@ public class User {
     @NotEmpty(message = "*Please provide your last name")
     private String lastName;
 
-    @Column(name = "active", nullable = false)
-    private int active;
+    @Column(name = "enable", nullable = false)
+    private boolean isEnabled;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_action", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "action_id"))
+    private Collection<Action> actions;
     @OneToMany(mappedBy = "user")
     private Collection<Post> posts;
 
@@ -100,12 +104,23 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getActive() {
-        return active;
+    public Boolean getEnabled() {
+        return isEnabled;
+    }
+    public boolean isEnabled() {
+        return isEnabled;
     }
 
-    public void setActive(int active) {
-        this.active = active;
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public Collection<Action> getActions() {
+        return actions;
+    }
+
+    public void setActions(Collection<Action> actions) {
+        this.actions = actions;
     }
 
     public Collection<Role> getRoles() {
@@ -130,5 +145,22 @@ public class User {
 
     public void setLikes(Collection<Like> likes) {
         this.likes = likes;
+    }
+
+    public User(Long uid, String email, String password, String username, String name, String lastName, boolean isEnabled) {
+        this.uid = uid;
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.name = name;
+        this.lastName = lastName;
+        this.isEnabled = isEnabled;
+    }
+
+    public User(Long uid, String password, String username, String name, ArrayList<User> users) {
+        this.uid = uid;
+        this.password = password;
+        this.username = username;
+        this.name = name;
     }
 }

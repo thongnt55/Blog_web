@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "like")
+@Table(name = "likeee")
 public class Like {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
