@@ -1,6 +1,6 @@
 package com.ntt55.blog_web.service;
-import com.ntt55.blog_web.Model.Post;
-import com.ntt55.blog_web.Model.User;
+import com.ntt55.blog_web.model.Post;
+import com.ntt55.blog_web.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 

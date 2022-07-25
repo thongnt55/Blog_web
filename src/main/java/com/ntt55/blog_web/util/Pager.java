@@ -1,6 +1,6 @@
 package com.ntt55.blog_web.util;
 
-import com.ntt55.blog_web.Model.Post;
+import com.ntt55.blog_web.model.Post;
 import org.springframework.data.domain.Page;
 
 public class Pager {

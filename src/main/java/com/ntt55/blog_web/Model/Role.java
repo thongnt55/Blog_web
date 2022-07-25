@@ -1,4 +1,4 @@
-package com.ntt55.blog_web.Model;
+package com.ntt55.blog_web.model;
 
 import javax.persistence.*;
 import java.util.Collection;

@@ -1,7 +1,7 @@
 package com.ntt55.blog_web.service.impl;
 
-import com.ntt55.blog_web.Model.Post;
-import com.ntt55.blog_web.Model.User;
+import com.ntt55.blog_web.model.Post;
+import com.ntt55.blog_web.model.User;
 import com.ntt55.blog_web.repository.PostRepository;
 import com.ntt55.blog_web.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
