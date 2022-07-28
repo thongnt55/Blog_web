@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     User saveUser(User user);
     Role saveRole(Role role);
-    void addRoletoUser(String username, String roleName);
+    void addRoletoUser(String username, String role);
     User getUser(String username);
     List<User> getUsers();
 

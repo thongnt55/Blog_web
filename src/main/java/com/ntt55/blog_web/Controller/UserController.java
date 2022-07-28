@@ -33,13 +33,13 @@ public class UserController {
         URI uri= URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/role").toUriString());
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
-    @PostMapping("/roletouser")
+    @PostMapping("/roletouser") //
     public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserForm form){
         userService.addRoletoUser(form.getUsername(),form.getRoleName());
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/user")
+    @PutMapping("/user")// update user
     public ResponseEntity<User> updateUser(@RequestBody User user){
 
         return ResponseEntity.ok().body(userService.saveUser(user));

@@ -1,5 +1,8 @@
 package com.ntt55.blog_web.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.*;
@@ -10,6 +13,9 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "post")
 @RequiredArgsConstructor
 public class Post {

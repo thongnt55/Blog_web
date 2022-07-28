@@ -1,13 +1,20 @@
 package com.ntt55.blog_web.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user")
 public class User {
 
@@ -147,6 +154,7 @@ public class User {
         this.likes = likes;
     }
 
+    @Autowired
     public User(Long uid, String email, String password, String username, String name, String lastName, boolean isEnabled) {
         this.uid = uid;
         this.email = email;
@@ -156,7 +164,7 @@ public class User {
         this.lastName = lastName;
         this.isEnabled = isEnabled;
     }
-
+    @Autowired
     public User(Long uid, String password, String username, String name, ArrayList<User> users) {
         this.uid = uid;
         this.password = password;

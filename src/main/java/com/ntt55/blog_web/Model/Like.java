@@ -1,12 +1,16 @@
 package com.ntt55.blog_web.Model;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.validator.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "likeee")
 public class Like {
     @Id
